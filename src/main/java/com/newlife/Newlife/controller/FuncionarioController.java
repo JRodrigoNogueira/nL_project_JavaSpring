@@ -1,4 +1,4 @@
-package com.newlife.Newlife.controller;
+package controller;
 
 import com.newlife.Newlife.dto.FuncionarioDto;
 import com.newlife.Newlife.dto.FuncionarioForm;

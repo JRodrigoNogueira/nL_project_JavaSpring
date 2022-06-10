@@ -1,4 +1,4 @@
-package com.newlife.Newlife.controller;
+package controller;
 
 import com.newlife.Newlife.dto.ApartamentoDto;
 import com.newlife.Newlife.service.ApartamentoService;
