@@ -1,0 +1,34 @@
+package com.newlife.Newlife.dto;
+
+import com.newlife.Newlife.entity.Funcionario;
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.persistence.Column;
+
+@Getter
+@Setter
+public class FuncionarioDto {
+
+    private String funcionario;
+
+    private String rg;
+
+    private String cpf;
+
+    private String telefone1;
+
+    private String telefone2;
+
+    private String observacoes;
+
+    public FuncionarioDto(Funcionario funcionario) {
+        this.funcionario = funcionario.getFuncionario();
+        this.rg = funcionario.getRg();
+        this.cpf = funcionario.getCpf();
+        this.telefone1 = funcionario.getTelefone1();
+        this.telefone2 = funcionario.getTelefone2();
+        this.observacoes = funcionario.getObservacoes();
+    }
+
+}
