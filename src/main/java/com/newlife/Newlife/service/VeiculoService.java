@@ -4,7 +4,10 @@ import com.newlife.Newlife.dto.VeiculoDto;
 import com.newlife.Newlife.dto.VeiculoForm;
 import com.newlife.Newlife.entity.Veiculo;
 import com.newlife.Newlife.repository.VeiculoRepository;
+import com.newlife.Newlife.repository.specifications.VeiculoSpecification;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -39,11 +42,19 @@ public class VeiculoService {
         veiculoRepository.save(veiculo);
     }
 
-    public void deleteVeiculo(String placa){
+    public void deleteVeiculo(Long id){
         // Validação
-        Veiculo veiculo = this.veiculoRepository.findByPlaca(placa).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        Veiculo veiculo = this.veiculoRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
         // Apagar registro de veiculo
         veiculoRepository.delete(veiculo);
+    }
+
+    public Page<Veiculo> findAll(Pageable pageable) {
+        return this.veiculoRepository.findAll(pageable);
+    }
+
+    public Page<Veiculo> findAll(Pageable pageable, String query) {
+        return this.veiculoRepository.findAll(VeiculoSpecification.likeGenericQuery(query),pageable);
     }
 
 }

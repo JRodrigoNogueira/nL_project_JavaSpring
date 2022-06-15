@@ -10,6 +10,7 @@ import javax.persistence.Column;
 @Setter
 public class VisitanteDto {
 
+    private Long id;
     private String visitante;
 
     private String rg;
@@ -22,13 +23,17 @@ public class VisitanteDto {
 
     private String observacoes;
 
+    private Long idApartamento;
+
     public VisitanteDto(Visitante visitante) {
+        this.id = visitante.getId();
         this.visitante = visitante.getVisitante();
         this.rg = visitante.getRg();
         this.cpf = visitante.getCpf();
         this.telefone1 = visitante.getTelefone1();
         this.telefone2 = visitante.getTelefone2();
         this.observacoes = visitante.getObservacoes();
+        this.idApartamento = visitante.getIdApartamento();
     }
 
 }

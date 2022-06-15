@@ -10,6 +10,7 @@ import javax.persistence.Column;
 @Setter
 public class MoradorDto {
 
+    private Long id;
     private String morador;
 
     private String rg;
@@ -28,7 +29,10 @@ public class MoradorDto {
 
     private String observacoes;
 
+    private Long idApartamento;
+
     public MoradorDto(Morador morador) {
+        this.id = morador.getId();
         this.morador = morador.getMorador();
         this.rg = morador.getRg();
         this.cpf = morador.getCpf();
@@ -38,6 +42,7 @@ public class MoradorDto {
         this.contatoEmergencia = morador.getContatoEmergencia();
         this.telefoneEmergencia = morador.getTelefoneEmergencia();
         this.observacoes = morador.getObservacoes();
+        this.idApartamento = morador.getIdApartamento();
     }
 
 }

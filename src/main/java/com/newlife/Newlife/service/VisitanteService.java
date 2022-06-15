@@ -4,7 +4,10 @@ import com.newlife.Newlife.dto.VisitanteDto;
 import com.newlife.Newlife.dto.VisitanteForm;
 import com.newlife.Newlife.entity.Visitante;
 import com.newlife.Newlife.repository.VisitanteRepository;
+import com.newlife.Newlife.repository.specifications.VisitanteSpecification;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -38,6 +41,14 @@ public class VisitanteService {
         Visitante v = this.visitanteRepository.findByVisitante(visitante).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
         // Apagar registro de veiculo
         visitanteRepository.delete(v);
+    }
+
+    public Page<Visitante> findAll(Pageable pageable) {
+        return this.visitanteRepository.findAll(pageable);
+    }
+
+    public Page<Visitante> findAll(Pageable pageable, String query) {
+        return this.visitanteRepository.findAll(VisitanteSpecification.likeGenericQuery(query),pageable);
     }
 
 }
