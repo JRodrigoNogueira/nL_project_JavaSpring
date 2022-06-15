@@ -1,4 +1,4 @@
-package com.newlife.Newlife.controller;
+package controller;
 
 import com.newlife.Newlife.dto.VisitanteDto;
 import com.newlife.Newlife.dto.VisitanteForm;
